@@ -74,7 +74,8 @@ function Header() {
     }))
     linesCode = linesCode.map(element => {
       return element.reduce((prev, curr) => prev + curr)
-    })    
+    })   
+
 
     let commits = data.viewer.repositories.edges.map(element => element.node.defaultBranchRef)
     commits = commits.filter(element => element !== null)
@@ -83,42 +84,40 @@ function Header() {
 
 
     return (
-      <body>
-
-      <div className="jumbotron text-center">
-        <div id="redirection">
-          <p>Share your profile on :</p>
-          <button className="btn btn-light btn-sm" onClick={linkedin}>LinkedIn</button>
-          <button className="btn btn-light btn-sm" onClick={facebook}>Facebook</button>
-          <button className="btn btn-light btn-sm" onClick={twitter}>Twitter</button>
-        </div>
-        <h1>{data.viewer.name}</h1>
-        <p>GitHub profile</p> 
-      </div>
-        
-      <div className="container">
-        <div className="row">
-          <div id="test" className="col-sm-3 text-center" >
-            <h4>Profile photo</h4>
-            <p>
-              <img src={photo} className="rounded-circle" alt="Photo" width="170" height="170"></img>
-            </p>
+      <>
+        <div className="jumbotron text-center">
+          <div id="redirection">
+            <p>Share your profile on :</p>
+            <button className="btn btn-light btn-sm" onClick={linkedin}>LinkedIn</button>
+            <button className="btn btn-light btn-sm" onClick={facebook}>Facebook</button>
+            <button className="btn btn-light btn-sm" onClick={twitter}>Twitter</button>
           </div>
-          <div className="col-sm-8">
-            <p><b>Name :</b> {data.viewer.name}</p>
-            <p><b>Location :</b> {data.viewer.location}</p>
-            <ul className="list-group list-group-horizontal">
-              <li className="list-group-item">Commits : {commits}</li>
-              <li className="list-group-item">Repos : {data.viewer.repositories.totalCount}</li>
-              <li className="list-group-item">Lines of lines : {linesCode}</li>
-              <li className="list-group-item">Followers : {data.viewer.followers.totalCount}</li>
-              <li className="list-group-item">Following : {data.viewer.following.totalCount}</li>
-            </ul>
+          <h1>{data.viewer.name}</h1>
+          <p>GitHub profile</p> 
+        </div>
+          
+        <div className="container">
+          <div className="row">
+            <div id="test" className="col-sm-3 text-center" >
+              <h4>Profile photo</h4>
+              <p>
+                <img src={photo} className="rounded-circle" alt="Photo" width="170" height="170"></img>
+              </p>
+            </div>
+            <div className="col-sm-8">
+              <p><b>Name :</b> {data.viewer.name}</p>
+              <p><b>Location :</b> {data.viewer.location}</p>
+              <ul className="list-group list-group-horizontal">
+                <li className="list-group-item">Commits : {commits}</li>
+                <li className="list-group-item">Repos : {data.viewer.repositories.totalCount}</li>
+                <li className="list-group-item">Lines of lines : {linesCode}</li>
+                <li className="list-group-item">Followers : {data.viewer.followers.totalCount}</li>
+                <li className="list-group-item">Following : {data.viewer.following.totalCount}</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      
-      </body>
+      </>
     );
   }
 
